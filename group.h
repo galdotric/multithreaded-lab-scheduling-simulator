@@ -2,17 +2,19 @@
 #define GROUP_H
 
 #include <vector>
-#include "student.h"
+
 struct Group {
-    int groupCapacity;
     int groupID;
-    std::vector<Student> students;
+    int groupCapacity;
+    std::vector<int> studentIDs;
 };
 
-int setCapacity(int& studentNumber, int& groupNumber);
+// Capacity of group `groupIndex` (0-based) out of `groupNumber` groups
+// sharing `studentNumber` students: the first N%M groups get one extra.
+int groupCapacityFor(int groupIndex, int studentNumber, int groupNumber);
 
 void initializeGroup(Group& group, int groupID, int capacity);
 
 std::vector<Group> createGroups(int groupNumber, int studentNumber);
 
-#endif
+#endif // GROUP_H
